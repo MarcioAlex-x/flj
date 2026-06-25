@@ -2,7 +2,7 @@ require('dotenv').config()
 const http = require('http')
 const { Server } = require('socket.io')
 
-const app = require('./src/app')
+const app = require('./src/app/app')
 const sequelize = require('./src/config/connect')
 require('./src/models/relacionamentos')
 
