@@ -19,8 +19,8 @@ class ClientesService {
 
     static async buscarUnico(id) {
         try {
-            const cliente = await Cliente.findByPk({
-                id,
+            const cliente = await Cliente.findByPk(id,{
+                
                 include: [
                     { model: Endereco },
                     { model: Veiculo }
@@ -28,7 +28,7 @@ class ClientesService {
             })
             return cliente
         } catch (err) {
-            throw new Error('Erro ao buscar cliente.', + err.message)
+            throw new Error('Erro ao buscar cliente.' + err.message)
         }
     }
 
@@ -37,7 +37,7 @@ class ClientesService {
             const novoCliente = await Cliente.create(dadosCliente)
             return novoCliente
         } catch (err) {
-            throw new Error('Erro ao registrar cliente.', + err.message)
+            throw new Error('Erro ao registrar cliente.' + err.message)
         }
     }
 }
