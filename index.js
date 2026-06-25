@@ -16,7 +16,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.use(clientesRouter)
+app.use('/clientes',clientesRouter)
 
 require('./src/models/relacionamentos')
 
