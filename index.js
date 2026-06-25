@@ -1,28 +1,12 @@
-const express = require('express')
-const { Server } = require('socket.io')
-const cors = require('cors')
-const sequelize = require('./src/config/connect')
 require('dotenv').config()
+const http = require('http')
+const { Server } = require('socket.io')
 
-const Cliente = require('./src/models/Cliente')
-const Veiculo = require('./src/models/Veiculo')
-const Endereco = require('./src/models/Endereco')
-const Atendimento = require('./src/models/Atendimento')
-
-const clientesRouter = require('./src/routes/clientesRouter')
-
-const app = express()
-
-app.use(cors())
-app.use(express.json())
-
-app.use('/clientes',clientesRouter)
-
+const app = require('./src/app')
+const sequelize = require('./src/config/connect')
 require('./src/models/relacionamentos')
 
-const server = app.listen(process.env.PORT, () => {
-    console.log(`aplicação em http://localhost:${process.env.PORT}`)
-})
+const server = http.createServer(app)
 
 const io = new Server(server, {
     cors: {
@@ -34,17 +18,22 @@ const io = new Server(server, {
 app.set('io', io)
 
 io.on('connection', (socket) => {
-    console.log(`Novo cliente conectado: ${socket.id}`)
+    console.log(`Novo cliente conectado no websocket: ${socket.id}`)
 })
 
 sequelize.authenticate()
     .then(() => {
-        console.log('Conexão estabelecida')
-        return sequelize.sync({alter:true})
+        console.log('Conexão estabelecida com o banco.')
+        return sequelize.sync({ alter: true })
     })
     .then(() => {
-        console.log('DB sincronizado')
+        console.log('DB sincronizado com relacionamentos.')
+        
+        const PORT = process.env.PORT || 3000
+        server.listen(PORT, () => {
+            console.log(`Aplicação rodando perfeitamente na porta ${PORT}`)
+        })
     })
     .catch((err) => {
-        console.error(err.message)
+        console.error('Falha crítica ao iniciar:', err.message)
     })
