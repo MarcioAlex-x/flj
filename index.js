@@ -9,10 +9,14 @@ const Veiculo = require('./src/models/Veiculo')
 const Endereco = require('./src/models/Endereco')
 const Atendimento = require('./src/models/Atendimento')
 
+const clientesRouter = require('./src/routes/clientesRouter')
+
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+
+app.use(clientesRouter)
 
 require('./src/models/relacionamentos')
 
