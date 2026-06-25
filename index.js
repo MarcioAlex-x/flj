@@ -4,13 +4,20 @@ const cors = require('cors')
 const sequelize = require('./src/config/connect')
 require('dotenv').config()
 
+const Cliente = require('./src/models/Cliente')
+const Veiculo = require('./src/models/Veiculo')
+const Endereco = require('./src/models/Endereco')
+const Atendimento = require('./src/models/Atendimento')
+
 const app = express()
 
-app.use(cors)
+app.use(cors())
 app.use(express.json())
 
+require('./src/models/relacionamentos')
+
 const server = app.listen(process.env.PORT, () => {
-    console.log('aplicação em http://localhost:3000')
+    console.log(`aplicação em http://localhost:${process.env.PORT}`)
 })
 
 const io = new Server(server, {
@@ -29,7 +36,7 @@ io.on('connection', (socket) => {
 sequelize.authenticate()
     .then(() => {
         console.log('Conexão estabelecida')
-        return sequelize.sync()
+        return sequelize.sync({alter:true})
     })
     .then(() => {
         console.log('DB sincronizado')

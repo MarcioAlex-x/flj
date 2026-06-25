@@ -7,6 +7,14 @@ const Veiculo = sequelize.define('Veiculo', {
         autoIncrement: true,
         primaryKey: true
     },
+    proprietario_id:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references:{
+            model: 'clientes',
+            key:'id'
+        }
+    },
     marca: {
         type: DataTypes.STRING,
         allowNull: false
@@ -27,3 +35,5 @@ const Veiculo = sequelize.define('Veiculo', {
     timestamps: true,
     tableName: 'veiculos'
 })
+
+module.exports = Veiculo

@@ -7,6 +7,14 @@ const Atendimento = sequelize.define('Atendimento', {
         autoIncrement: true,
         primaryKey: true
     },
+    veiculo_id:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references:{
+            model: 'veiculos',
+            key: 'id'
+        }
+    },
     status: {
         type: DataTypes.ENUM(
             'AGUARDANDO', 
