@@ -9,6 +9,5 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/clientes', clientesRouter)
-app.use('/enderecos', enderecosRouter)
 
 module.exports = app

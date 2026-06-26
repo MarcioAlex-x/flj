@@ -1,8 +1,9 @@
 const { Router } = require('express')
-const { criarEnderecoController } = require('../controllers/EnderecosController')
+const  criarEnderecoController  = require('../controllers/EnderecosController')
+const EnderecoController = require('../controllers/EnderecosController')
 
-const router = Router()
+const router = Router({ mergeParams: true })
 
-router.post('/',criarEnderecoController)
+router.post('/',EnderecoController.criarEnderecoCliente)
 
 module.exports = router
