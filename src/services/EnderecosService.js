@@ -10,7 +10,7 @@ class EnderecosService {
 
       const dadosId = {
         ...dadosEndereco,
-        clienteId,
+        cliente_id: clienteId,
       };
 
       const novoEndereco = await Endereco.create(dadosId);
