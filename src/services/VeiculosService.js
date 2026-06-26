@@ -11,7 +11,7 @@ class VeiculosService {
 
       const dadosId = {
         ...dadosVeiculo,
-        cliente_id: clienteId,
+        proprietario_id: clienteId,
       };
 
       const novoVeiculo = await Veiculos.create(dadosId);
@@ -33,7 +33,7 @@ class VeiculosService {
       const veiculoExistente = await Veiculos.findOne({
         where: {
           id: veiculoId,
-          cliente_id: clienteId,
+          proprietario_id: clienteId,
         },
       });
 
@@ -42,13 +42,13 @@ class VeiculosService {
       await Veiculos.update(dadosVeiculo, {
         where: { 
           id: veiculoId,
-          cliente_id: clienteId },
+          proprietario_id: clienteId },
       });
 
       const veiculoAtualizado = await Veiculos.findOne({
         where: {
           id: veiculoId,
-          cliente_id: clienteId,
+          proprietario_id: clienteId,
         },
       });
 
