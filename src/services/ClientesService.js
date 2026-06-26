@@ -9,7 +9,7 @@ class ClientesService {
     try {
       const clientes = await Cliente.findAll({
         order: [
-          ["nome", "DESC"],
+          ["nome", "ASC"],
         ],
         include: [{ model: Endereco }, { model: Veiculo }],
       });
