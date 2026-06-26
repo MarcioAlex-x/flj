@@ -3,12 +3,14 @@ const {
   editarVeiculoSchema,
 } = require("../schemas/veiculoSchema");
 
+const VeiculosService = require('../services/VeiculosService')
+
 class VeiculosController {
   static async criarVeiculoCliente(req, res) {
     try {
-      const { clienteId, veiculoId } = req.params;
+      const { clienteId } = req.params;
       const dadosValidos = criarVeiculoSchema.parse(req.body);
-      const novoVeiculo = await VeiculosController.criarVeiculoCliente(
+      const novoVeiculo = await VeiculosService.criarVeiculoCliente(
         clienteId,
         dadosValidos,
       );

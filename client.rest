@@ -41,3 +41,14 @@ Content-Type: application/json
   "cidade":"João Pessoa",
   "estado":"PB"
 }
+
+###
+POST {{host}}/clientes/7/veiculos
+Content-Type: application/json
+
+{
+  "marca":"fiat",
+  "modelo":"uno",
+  "ano":"1990",
+  "placa":"abc1234"
+}
