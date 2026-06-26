@@ -67,12 +67,12 @@ class ClientesService {
     try {
       const cliente = await Cliente.findAll({
         where: {
+          nome: {
+            [Op.iLike]: `%${nome}%`,
+          },
           order: [
             ["nome", "ASC"],
           ],
-          nome: {
-            [Op.iLike]: `%${nome}%`,
-          }
         },
         include: [{ model: Veiculo }, { model: Endereco }],
       });
