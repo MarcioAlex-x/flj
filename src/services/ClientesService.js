@@ -10,7 +10,6 @@ class ClientesService {
       const clientes = await Cliente.findAll({
         order: [
           ["nome", "DESC"],
-          ["id", "DESC"],
         ],
         include: [{ model: Endereco }, { model: Veiculo }],
       });
@@ -74,7 +73,6 @@ class ClientesService {
         },
         order: [
           ["nome", "DESC"],
-          ["id", "DESC"],
         ],
         include: [{ model: Veiculo }, { model: Endereco }],
       });
