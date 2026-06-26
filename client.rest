@@ -28,3 +28,16 @@ DELETE {{host}}/clientes/2
 
 ###
 GET {{host}}/clientes/nome/cleber
+
+###
+POST {{host}}/clientes/7/enderecos
+Content-Type: application/json
+
+{
+  "cep":"58000000",
+  "logradouro":"Rua diogenes dias",
+  "numero":"33",
+  "bairro":"Mangabeira",
+  "cidade":"João Pessoa",
+  "estado":"PB"
+}

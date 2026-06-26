@@ -18,7 +18,7 @@ const criarEnderecoSchema = z.object({
   cidade: z
     .string({ required_error: "A cidade é obrigatória." })
     .min(2, "A cidade precisa ter no mínimo 2 caracteres."),
-  uf: z
+  estado: z
     .string({ required_error: "O estado (UF) é obrigatório." })
     .length(2, "A UF deve ter exatamente 2 letras (Ex: PB, SP, RJ).")
 });
