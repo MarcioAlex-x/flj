@@ -3,7 +3,7 @@
 
 GET {{host}}/clientes
 ###
-GET {{host}}/clientes/1
+GET {{host}}/clientes/3
 ###
 POST {{host}}/clientes
 content-type: application/json
@@ -22,3 +22,6 @@ Content-Type: application/json
 {
   "nome": "Fernanda Cabral de Lima"
 }
+
+###
+DELETE {{host}}/clientes/4

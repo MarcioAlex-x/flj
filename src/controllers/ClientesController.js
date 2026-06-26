@@ -63,7 +63,7 @@ class ClientesController {
                 return res.status(404).json({ erro: 'Cliente não encontrado.' });
             }
 
-            return res.status(204).send(); 
+            return res.status(204).json({mensagem: 'Cliente removido com sucesso.'}); 
         } catch (err) {
             return res.status(500).json({ erro: err.message });
         }

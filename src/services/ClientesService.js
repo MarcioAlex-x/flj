@@ -50,6 +50,7 @@ class ClientesService {
       const cliente = await Cliente.findByPk(id);
       if (!cliente) return null;
       await cliente.destroy();
+      return true
     } catch (err) {
       throw new Error("Erro ao remover cliente." + err.message);
     }
