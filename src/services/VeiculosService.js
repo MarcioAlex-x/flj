@@ -2,7 +2,7 @@ const Cliente = require("../models/Cliente");
 const Veiculos = require("../models/Veiculo");
 
 class VeiculosService {
-  static async criarVeiculoCliente(clienteId, veiculoId, dadosVeiculo) {
+  static async criarVeiculoCliente(clienteId, dadosVeiculo) {
     try {
       const clienteEcontrado = await Cliente.findByPk(clienteId);
       if (!clienteEcontrado) {
@@ -22,7 +22,7 @@ class VeiculosService {
     }
   }
 
-  static async editarVeiculoCliente(clienteId, dadosVeiculo) {
+  static async editarVeiculoCliente(clienteId, veiculoId, dadosVeiculo) {
     try {
       const clienteEcontrado = await Cliente.findByPk(clienteId);
 
@@ -32,7 +32,7 @@ class VeiculosService {
 
       const veiculoExistente = await Veiculos.findOne({
         where: {
-          id: veiculoAtualizado,
+          id: veiculoId,
           cliente_id: clienteId,
         },
       });
@@ -45,7 +45,7 @@ class VeiculosService {
           cliente_id: clienteId },
       });
 
-      const veiculoAtualizado = await Veiculo.findOne({
+      const veiculoAtualizado = await Veiculos.findOne({
         where: {
           id: veiculoId,
           cliente_id: clienteId,
