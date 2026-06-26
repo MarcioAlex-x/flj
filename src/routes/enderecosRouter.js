@@ -3,6 +3,6 @@ const { criarEnderecoController } = require('../controllers/EnderecosController'
 
 const router = Router()
 
-router.get('/',criarEnderecoController)
+router.post('/',criarEnderecoController)
 
 module.exports = router
