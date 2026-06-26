@@ -70,10 +70,10 @@ class ClientesService {
           nome: {
             [Op.iLike]: `%${nome}%`,
           },
-          order: [
-            ["nome", "ASC"],
-          ],
         },
+        order: [
+          ["nome", "ASC"],
+        ],
         include: [{ model: Veiculo }, { model: Endereco }],
       });
 
