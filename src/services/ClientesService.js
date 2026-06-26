@@ -68,7 +68,9 @@ class ClientesService {
     try {
       const cliente = await Cliente.findAll({
         where: {
-          [Op.iLike]: `%${nome}%`,
+            nome: {
+                [Op.iLike]: `%${nome}%`,
+            }
         },
         order: [
           ["nome", "DESC"],
@@ -79,7 +81,7 @@ class ClientesService {
 
       return cliente;
     } catch (err) {
-      throw new Error("Erro ao buscar cliente.");
+      throw new Error("Erro ao buscar cliente." + err.message);
     }
   }
 

@@ -75,7 +75,7 @@ class ClientesController {
       try {
         const { nome } = req.params
         const clientes = await ClientesService.buscarClientePorNome(nome)
-        if(cliente.length === 0){
+        if(clientes.length === 0){
           return res.status(404).json({ mensagem: 'Nenhum cliente encontrado com esse termo.' })
         }
         return res.status(200).json(clientes)

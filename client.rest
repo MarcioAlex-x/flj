@@ -9,10 +9,10 @@ POST {{host}}/clientes
 content-type: application/json
 
 {
-    "nome": "João Cleber Fonseca",
+    "nome": "João Cleber Sobral",
     "telefone1": "83987657531",
     "telefone2": "83991358853",
-    "email": "jc@email.com"
+    "email": "jcs@email.com"
 }
 
 ###
@@ -25,3 +25,6 @@ Content-Type: application/json
 
 ###
 DELETE {{host}}/clientes/2
+
+###
+GET {{host}}/clientes/nome/cleber
