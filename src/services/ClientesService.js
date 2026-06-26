@@ -38,7 +38,7 @@ class ClientesService {
     try {
       const cliente = await Cliente.findByPk(id);
       if (!cliente) return null;
-      await Cliente.update(dadosCliente);
+      await cliente.update(dadosCliente);
       return cliente;
     } catch (err) {
       throw new Error("Erro ao atualizar cliente." + err.message);
@@ -49,7 +49,7 @@ class ClientesService {
     try {
       const cliente = await Cliente.findByPk(id);
       if (!cliente) return null;
-      await Cliente.destroy();
+      await cliente.destroy();
     } catch (err) {
       throw new Error("Erro ao remover cliente." + err.message);
     }

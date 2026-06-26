@@ -1,1 +1,24 @@
-GET 
+@host=https://flj-671w.onrender.com
+
+
+GET {{host}}/clientes
+###
+GET {{host}}/clientes/1
+###
+POST {{host}}/clientes
+content-type: application/json
+
+{
+    "nome": "Fernanda Cabral de Lima Souto",
+    "telefone1": "83987657531",
+    "telefone2": "83991358853",
+    "email": "fernanda@email.com"
+}
+
+###
+PATCH {{host}}/clientes/3
+Content-Type: application/json
+
+{
+  "nome": "Fernanda Cabral de Lima"
+}
