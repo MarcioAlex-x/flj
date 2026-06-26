@@ -1,3 +1,5 @@
+const { Op } = require("sequelize");
+
 const Cliente = require("../models/Cliente");
 const Endereco = require("../models/Endereco");
 const Veiculo = require("../models/Veiculo");
@@ -6,6 +8,10 @@ class ClientesService {
   static async buscarTodos() {
     try {
       const clientes = await Cliente.findAll({
+        order: [
+          ["nome", "DESC"],
+          ["id", "DESC"],
+        ],
         include: [{ model: Endereco }, { model: Veiculo }],
       });
       return clientes;
@@ -50,11 +56,33 @@ class ClientesService {
       const cliente = await Cliente.findByPk(id);
       if (!cliente) return null;
       await cliente.destroy();
-      return true
+      return true;
     } catch (err) {
       throw new Error("Erro ao remover cliente." + err.message);
     }
   }
+
+  //metodos especiais
+
+  static async buscarClientePorNome(nome) {
+    try {
+      const cliente = await Cliente.findAll({
+        where: {
+          [Op.iLike]: `%${nome}%`,
+        },
+        order: [
+          ["nome", "DESC"],
+          ["id", "DESC"],
+        ],
+        include: [{ model: Veiculo }, { model: Endereco }],
+      });
+
+      return cliente;
+    } catch (err) {
+      throw new Error("Erro ao buscar cliente.");
+    }
+  }
+
 }
 
 module.exports = ClientesService;

@@ -3,16 +3,16 @@
 
 GET {{host}}/clientes
 ###
-GET {{host}}/clientes/3
+GET {{host}}/clientes/5
 ###
 POST {{host}}/clientes
 content-type: application/json
 
 {
-    "nome": "Fernanda Cabral de Lima Souto",
+    "nome": "João Cleber Fonseca",
     "telefone1": "83987657531",
     "telefone2": "83991358853",
-    "email": "fernanda@email.com"
+    "email": "jc@email.com"
 }
 
 ###
@@ -24,4 +24,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{host}}/clientes/4
+DELETE {{host}}/clientes/2

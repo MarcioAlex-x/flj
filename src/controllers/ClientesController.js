@@ -19,7 +19,7 @@ class ClientesController {
     try {
       const cliente = await ClientesService.buscarUnico(id);
       if (!cliente) {
-        return res.status(404).json({ erro: "Clienete não encontrado." });
+        return res.status(404).json({ erro: "Cliente não encontrado." });
       }
       return res.status(200).json(cliente);
     } catch (err) {
@@ -63,10 +63,25 @@ class ClientesController {
                 return res.status(404).json({ erro: 'Cliente não encontrado.' });
             }
 
-            return res.status(204).json({mensagem: 'Cliente removido com sucesso.'}); 
+            return res.status(200).json({mensagem: 'Cliente removido com sucesso.'}); 
         } catch (err) {
             return res.status(500).json({ erro: err.message });
         }
+    }
+
+    //metodos especiais
+
+    static async buscarClientePorNome(req, res) {
+      try {
+        const { nome } = req.params
+        const clientes = await ClientesService.buscarClientePorNome(nome)
+        if(cliente.length === 0){
+          return res.status(404).json({ mensagem: 'Nenhum cliente encontrado com esse termo.' })
+        }
+        return res.status(200).json(clientes)
+      } catch (err) {
+        return res.status(500).json({ erro: err.message })
+      }
     }
 }
 

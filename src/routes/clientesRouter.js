@@ -9,4 +9,7 @@ router.post('/',ClientesController.criarUsuario)
 router.patch('/:id',ClientesController.atualizarCliente)
 router.delete('/:id',ClientesController.removerCliente)
 
+//rotas expeciais
+router.get('/nome/:nome', ClientesController.buscarClientePorNome)
+
 module.exports = router
