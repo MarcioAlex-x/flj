@@ -3,7 +3,7 @@
 
 GET {{host}}/clientes
 ###
-GET {{host}}/clientes/5
+GET {{host}}/clientes/7
 ###
 POST {{host}}/clientes
 content-type: application/json
@@ -30,7 +30,7 @@ DELETE {{host}}/clientes/2
 GET {{host}}/clientes/nome/cleber
 
 ###
-POST {{host}}/clientes/7/enderecos
+POST {{host}}/clientes/6/enderecos
 Content-Type: application/json
 
 {

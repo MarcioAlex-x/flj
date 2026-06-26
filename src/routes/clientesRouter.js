@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const ClientesController = require('../controllers/ClientesController')
 const enderecoRouter = require('./enderecosRouter')
+const veiculosRouter = require('./veiculosRouter')
 
 const router = Router()
 
@@ -12,6 +13,9 @@ router.delete('/:id',ClientesController.removerCliente)
 
 //rota de endereco
 router.use('/:clienteId/enderecos', enderecoRouter)
+
+//rota endereco
+router.use('/:clienteId/veiculos', veiculosRouter)
 
 //rotas expeciais
 router.get('/nome/:nome', ClientesController.buscarClientePorNome)
