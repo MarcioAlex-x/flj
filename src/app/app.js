@@ -1,13 +1,20 @@
-const express = require('express')
-const cors = require('cors')
+const express = require("express");
+const cors = require("cors");
 
-const clientesRouter = require('../routes/clientesRouter')
-const enderecosRouter = require('../routes/enderecosRouter')
-const app = express()
+const clientesRouter = require("../routes/clientesRouter");
+const enderecosRouter = require("../routes/enderecosRouter");
+const caixaRouter = require("../routes/caixaRouter");
+const atendimentosRouter = require("../routes/atendimentoRouter");
+const servicosRouter = require('../routes/servicosRouter')
 
-app.use(cors())
-app.use(express.json())
+const app = express();
 
-app.use('/clientes', clientesRouter)
+app.use(cors());
+app.use(express.json());
 
-module.exports = app
+app.use("/clientes", clientesRouter);
+app.use("/caixa", caixaRouter);
+app.use("/atendimentos", atendimentosRouter);
+app.use('/servicos', servicosRouter)
+
+module.exports = app;

@@ -43,12 +43,12 @@ Content-Type: application/json
 }
 
 ###
-POST {{host}}/clientes/7/veiculos
+POST {{host}}/clientes/9/veiculos
 Content-Type: application/json
 
 {
-  "marca":"fiat",
-  "modelo":"uno",
-  "ano":"1990",
-  "placa":"abc1234"
+  "marca":"ford",
+  "modelo":"fiesta",
+  "ano":"2022",
+  "placa":"bbb2022"
 }

@@ -1,7 +1,25 @@
+const { Op } = require("sequelize");
 const Cliente = require("../models/Cliente");
 const Veiculos = require("../models/Veiculo");
 
 class VeiculosService {
+  static async buscarVeiculosPorModelo(modelo) {
+    try {
+      const veiculos = await Veiculos.findAll({
+        where: {
+          modelo: {
+            [Op.iLike]: `%${modelo}%`,
+          },
+        },
+        order: [["modelo", "ASC"]],
+      });
+
+      return veiculos;
+    } catch (err) {
+      throw new Error("Erro ao buscar veículos por modelo." + err.message);
+    }
+  }
+
   static async criarVeiculoCliente(clienteId, dadosVeiculo) {
     try {
       const clienteEcontrado = await Cliente.findByPk(clienteId);
@@ -40,9 +58,10 @@ class VeiculosService {
       if (veiculoExistente) return null;
 
       await Veiculos.update(dadosVeiculo, {
-        where: { 
+        where: {
           id: veiculoId,
-          proprietario_id: clienteId },
+          proprietario_id: clienteId,
+        },
       });
 
       const veiculoAtualizado = await Veiculos.findOne({

@@ -1,23 +1,23 @@
-const {Router} = require('express')
-const ClientesController = require('../controllers/ClientesController')
-const enderecoRouter = require('./enderecosRouter')
-const veiculosRouter = require('./veiculosRouter')
+const { Router } = require("express");
+const ClientesController = require("../controllers/ClientesController");
+const enderecoRouter = require("./enderecosRouter");
+const veiculosRouter = require("./veiculosRouter");
 
-const router = Router()
+const router = Router();
 
-router.get('/',ClientesController.buscarTodos)
-router.get('/:id',ClientesController.buscarUnico)
-router.post('/',ClientesController.criarUsuario)
-router.patch('/:id',ClientesController.atualizarCliente)
-router.delete('/:id',ClientesController.removerCliente)
+router.get("/", ClientesController.buscarTodos);
+router.get("/:id", ClientesController.buscarUnico);
+router.post("/", ClientesController.criarUsuario);
+router.patch("/:id", ClientesController.atualizarCliente);
+router.delete("/:id", ClientesController.removerCliente);
 
 //rota de endereco
-router.use('/:clienteId/enderecos', enderecoRouter)
+router.use("/:clienteId/enderecos", enderecoRouter);
 
 //rota endereco
-router.use('/:clienteId/veiculos', veiculosRouter)
+router.use("/:clienteId/veiculos", veiculosRouter);
 
 //rotas expeciais
-router.get('/nome/:nome', ClientesController.buscarClientePorNome)
+router.get("/nome/:nome", ClientesController.buscarClientePorNome);
 
-module.exports = router
+module.exports = router;
