@@ -1,6 +1,6 @@
 // models/Caixa.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); 
+const sequelize = require('../config/connect'); 
 
 const Caixa = sequelize.define('Caixa', {
   data_fechamento: {
