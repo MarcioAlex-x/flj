@@ -12,7 +12,7 @@ class ServicosService {
 
   static async buscarSrvicos() {
     try {
-      const servicos = Servico.findAll();
+      const servicos = await Servico.findAll();
       return servicos;
     } catch (err) {
       throw new Error("Não foi possível buscar os serviços" + err.message);

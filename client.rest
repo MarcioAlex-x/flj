@@ -61,3 +61,5 @@ Content-Type: application/json
   "servico":"Lavagem simples",
   "valor":70.00
 }
+###
+GET {{host}}/servicos
