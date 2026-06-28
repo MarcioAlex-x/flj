@@ -11,3 +11,5 @@ class ServicosService {
   }
   
 }
+
+module.exports =  ServicosService
