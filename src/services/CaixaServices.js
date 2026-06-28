@@ -19,7 +19,6 @@ class CaixaService {
         throw new Error("O caixa de hoje já foi fechado!");
       }
 
-      // 3. Contamos quantos atendimentos tiveram hoje
       const qtdAtendimentos = await Atendimento.count({
         where: {
           createdAt: { [Op.between]: [inicioDoDia, fimDoDia] },

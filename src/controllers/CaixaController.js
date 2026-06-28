@@ -1,5 +1,4 @@
-// controllers/CaixaController.js
-const CaixaService = require("../services/CaixaService");
+const CaixaService = require("../services/CaixaServices");
 
 class CaixaController {
   static async fecharCaixa(req, res) {
