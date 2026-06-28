@@ -18,6 +18,8 @@ class ServicosService {
       throw new Error("Não foi possível buscar os serviços" + err.message);
     }
   }
+
+  
 }
 
 module.exports = ServicosService;

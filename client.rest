@@ -58,8 +58,8 @@ POST {{host}}/servicos
 Content-Type: application/json
 
 {
-  "servico":"Lavagem simples",
-  "valor":70.00
+  "servico":"Lavagem completa",
+  "valor":100,00
 }
 ###
 GET {{host}}/servicos
