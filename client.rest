@@ -52,3 +52,12 @@ Content-Type: application/json
   "ano":"2022",
   "placa":"bbb2022"
 }
+
+###
+POST {{host}}/servicos
+Content-Type: application/json
+
+{
+  "servico":"Lavagem simples",
+  "valor":70.00
+}
