@@ -19,6 +19,7 @@ class EnderecoController {
       return res.status(201).json(novoEndereco);
     } catch (err) {
       return res.status(500).json({ erro: err.message });
+      console.log(err.message)
     }
   }
   static async atualizarEnderecoCliente(req, res) {

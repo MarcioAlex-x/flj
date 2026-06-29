@@ -14,7 +14,7 @@ router.delete("/:id", ClientesController.removerCliente);
 //rota de endereco
 router.use("/:clienteId/enderecos", enderecoRouter);
 
-//rota endereco
+//rota veiculo
 router.use("/:clienteId/veiculos", veiculosRouter);
 
 //rotas expeciais
