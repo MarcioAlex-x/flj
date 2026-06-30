@@ -63,6 +63,19 @@ class VeiculosController {
       return res.status(500).json({ erro: err.message });
     }
   }
+
+  static async buscarVeiculosPorCliente(req, res) {
+    try {
+      const { clienteId } = req.params;
+      
+      const veiculos = await VeiculosService.buscarVeiculosPorCliente(clienteId);
+      
+      return res.status(200).json(veiculos);
+    } catch (err) {
+      console.log("Erro ao buscar veículos do cliente:", err);
+      return res.status(500).json({ erro: err.message });
+    }
+  }
 }
 
 module.exports = VeiculosController;

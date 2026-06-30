@@ -20,6 +20,19 @@ class VeiculosService {
     }
   }
 
+  static async buscarVeiculosPorCliente(clienteId) {
+    try {
+      const veiculos = await Veiculos.findAll({
+        where: {
+          proprietario_id: clienteId, // Usando a sua coluna correta!
+        },
+      });
+      return veiculos;
+    } catch (err) {
+      throw new Error("Erro ao buscar veículos do cliente. " + err.message);
+    }
+  }
+
   static async criarVeiculoCliente(clienteId, dadosVeiculo) {
     try {
       const clienteEcontrado = await Cliente.findByPk(clienteId);
@@ -55,7 +68,7 @@ class VeiculosService {
         },
       });
 
-      if (veiculoExistente) return null;
+      if (!veiculoExistente) return null;
 
       await Veiculos.update(dadosVeiculo, {
         where: {
